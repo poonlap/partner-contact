@@ -71,7 +71,8 @@ class ResCompany(models.Model):
                 {
                     "zip": self.zip_id.name,
                     "city_id": self.zip_id.city_id,
-                    "city": self.zip_id.city_id.name,
+                    "city": self.zip_id.city_id.name.split(", ")[1] if len(self.zip_id.city_id.name.split(", ")) == 2 else self.zip_id.city_id.name.split(", ")[0],
+                    "street2": self.zip_id.city_id.name.split(", ")[0] if len(self.zip_id.city_id.name.split(", ")) == 2 else '',
                     "country_id": self.zip_id.city_id.country_id,
                     "state_id": self.zip_id.city_id.state_id,
                 }
